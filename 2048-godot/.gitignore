@@ -1,0 +1,39 @@
+# Godot-specific ignores
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+
+# System/tool-specific ignores
+.DS_Store
+.directory
+*~
+
+# Build output
+builds/
+*.pck
+
+# Plugin specific
+addons/
+
+# Godot 4.x import files
+*.import
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.bak
+
+# IDE specific (Visual Studio Code, etc)
+.vscode/
+.vs/
+.idea/
+*.code-workspace 

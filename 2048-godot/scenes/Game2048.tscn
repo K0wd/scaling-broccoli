@@ -1,0 +1,167 @@
+[gd_scene load_steps=9 format=3 uid="uid://q24a1igd450c"]
+
+[ext_resource type="Script" uid="uid://c0hw377ri0y3n" path="res://scripts/Game2048.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://c7lm1ce3ijmur" path="res://assets/sounds/merge.ogg" id="2"]
+[ext_resource type="AudioStream" uid="uid://c7ixt0gsr2d64" path="res://assets/sounds/move.ogg" id="3"]
+[ext_resource type="AudioStream" uid="uid://ce6lvg3wvbrtk" path="res://assets/sounds/up.ogg" id="4"]
+[ext_resource type="AudioStream" uid="uid://b2pt6lgeqaecm" path="res://assets/sounds/down.ogg" id="5"]
+[ext_resource type="AudioStream" uid="uid://pwrxdd8qu4jq" path="res://assets/sounds/left.ogg" id="6"]
+[ext_resource type="AudioStream" uid="uid://xkc5l16q4hqs" path="res://assets/sounds/right.ogg" id="7"]
+
+[sub_resource type="StyleBoxFlat" id="1"]
+bg_color = Color(0.95, 0.92, 0.85, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="Game2048" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TopContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TitleContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TopContainer/TitleContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "2048"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TopContainer/ScoreContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TopContainer/ScoreContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "SCORE"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="MarginContainer/VBoxContainer/TopContainer/ScoreContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 1
+
+[node name="BestContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TopContainer/BestContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TopContainer/BestContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "BEST"
+horizontal_alignment = 1
+
+[node name="Best" type="Label" parent="MarginContainer/VBoxContainer/TopContainer/BestContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 1
+
+[node name="Instructions" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.58, 0.51, 1)
+theme_override_font_sizes/font_size = 18
+text = "Join the numbers and get to the 2048 tile!"
+horizontal_alignment = 1
+
+[node name="GridBackground" type="Panel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="Grid" type="GridContainer" parent="MarginContainer/VBoxContainer/GridBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="MenuButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "MENU"
+
+[node name="LeaderboardButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "LEADERBOARD"
+
+[node name="MergeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2")
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3")
+
+[node name="UpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4")
+
+[node name="DownSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5")
+
+[node name="LeftSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6")
+
+[node name="RightSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7")
